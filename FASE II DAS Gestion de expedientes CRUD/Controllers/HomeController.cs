@@ -1,21 +1,23 @@
 using System.Diagnostics;
 using FASE_II_DAS_Gestion_de_expedientes_CRUD.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace FASE_II_DAS_Gestion_de_expedientes_CRUD.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly GestionexpedienteContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public  HomeController(GestionexpedienteContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<Alumno> alumno = _context.Alumnos.ToList();
+            return View(alumno);
         }
 
         public IActionResult Privacy()

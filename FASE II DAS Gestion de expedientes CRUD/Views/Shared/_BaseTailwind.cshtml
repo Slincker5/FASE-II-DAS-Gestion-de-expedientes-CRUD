@@ -4,10 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"]</title>
+    <script src="https://kit.fontawesome.com/98424cc025.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@@tailwindcss/browser@4"></script>
 </head>
-<body class="min-h-screen">
-    @RenderBody()
-    @RenderSection("Scripts", required: false)
+<body class="bg-gray-50">
+    <div class="grid max-w-5xl mx-auto">
+        <nav class="flex items-center justify-between px-4 py-6 border-solid border-t-[5px] border-[#252525] font-medium text-xl bg-blue-700 text-white">
+            <h1>Gestion Expediente</h1>
+            <ul class="list-none">
+                <li class="inline-block"><a href="#" class="p-4 text-gray-800 hidden">enlace prueba</a></li>
+            </ul>
+        </nav>
+    <div class="bg-white">
+        @RenderBody()
+        @RenderSection("Scripts", required: false)
+        </div>
+    </div>
 </body>
 </html>

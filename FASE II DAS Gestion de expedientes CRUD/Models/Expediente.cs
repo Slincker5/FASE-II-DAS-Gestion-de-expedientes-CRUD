@@ -1,21 +1,21 @@
-﻿namespace FASE_II_DAS_Gestion_de_expedientes_CRUD.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace FASE_II_DAS_Gestion_de_expedientes_CRUD.Models;
+
+public partial class Expediente
 {
-    public class Expediente
-    {
-        int ExpedienteId { get; set; }
-        int AlumnoId { get; set; }
-        int MateriaId { get; set; }
-        int NotaFinal { get; set; }
-        string Observaciones { get; set; }
-        public Expediente(int expedienteId, int alumnoId, int materiaId, int notaFinal, string observaciones)
-        {
-            ExpedienteId = expedienteId;
-            AlumnoId = alumnoId;
-            MateriaId = materiaId;
-            NotaFinal = notaFinal;
-            Observaciones = observaciones;
-        }
+    public int ExpedienteId { get; set; }
 
+    public int? AlumnoId { get; set; }
 
-    }
+    public int? MaterialId { get; set; }
+
+    public double? NotaFinal { get; set; }
+
+    public string? Observaciones { get; set; }
+
+    public virtual Alumno? Alumno { get; set; }
+
+    public virtual Materium? Material { get; set; }
 }
