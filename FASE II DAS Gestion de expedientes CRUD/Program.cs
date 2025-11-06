@@ -27,4 +27,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// ruta para editar
+app.MapControllerRoute(
+    name: "editar",
+    pattern: "{controller=EditarEstudiante}/{action=Editar}/{id?}");
 app.Run();

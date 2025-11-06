@@ -31,7 +31,7 @@ else
         {
             <div class="p-3 border-b border-[#ddd] border-solid bg-white flex items-center justify-between">
                <div class="flex items-center justify-between gap-x-4 flex-1">
-                    <a class="font-medium w-[33.33%] underline text-blue-600">@alumno.Nombre @alumno.Apellido</a>
+                    <a asp-controller="EditarEstudiante" asp-action="Editar" asp-route-id="@alumno.AlumnoId" class="font-medium w-[33.33%] underline text-blue-600">@alumno.Nombre @alumno.Apellido</a>
                     <p class="text-sm text-gray-600 text-left w-[25%]">Grado: @alumno.Grado</p>
                     <p class="text-sm text-gray-600 w-[33.33%]">Fecha de nacimiento: @alumno.FechaNacimiento?.ToShortDateString()</p>
                </div> 
