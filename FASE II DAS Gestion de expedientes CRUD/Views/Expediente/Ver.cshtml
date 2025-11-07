@@ -1,0 +1,42 @@
+﻿@model FASE_II_DAS_Gestion_de_expedientes_CRUD.Models.Alumno;
+@{
+    Layout = "_BaseTailwind";
+    ViewData["Title"] = "Gestión de Expedientes";
+}
+
+<h1 class="font-semibold text-lg p-4 flex items-center  justify-between">
+    <a asp-controller="Home" asp-action="Index" class="font-medium text-blue-600 text-sm"><i class="fa-duotone fa-regular fa-arrow-left"></i> Regresar</a>
+    Expediente Alumno @Model.AlumnoId
+</h1>
+
+<div class="flex items-center justify-between p-4 border-y border-dashed border-[#ddd]">
+    <div class="flex items-center justify-between">
+        <img src="https://multimarcas.app/usuario.png" class="w-[90px] h-[90px]" />
+        <span class="font-medium text-xl ml-4">@Model.Nombre @Model.Apellido</span>
+    </div>
+    <div>
+        <span class="text-2xl font-medium text-blue-600">@Model.Expedientes.Count Materias</span>
+    </div>
+</div>
+
+@if (Model.Expedientes == null || !Model.Expedientes.Any())
+{
+    <p class="text-gray-500 italic">No hay expedientes registrados.</p>
+}
+else
+{
+    <ul class="flex flex-wrap bg-white p-4">
+        @foreach (var exp in Model.Expedientes)
+        {
+            <div class="w-1/2 p-4">
+                <div class="bg-gray-50 shadow-sm shadow-black/30">
+                    <p class="p-4"><strong>Materia:</strong> @exp.Material?.NombreMateria</p>
+                    <p class="p-4"><strong>Nota Final:</strong> @exp.NotaFinal</p>
+                    <p class="bg-yellow-100 text-yellow-800 p-4"><strong>Observaciones:</strong> @exp.Observaciones</p>
+                </div>
+            </div>
+                
+            
+        }
+    </ul>
+}

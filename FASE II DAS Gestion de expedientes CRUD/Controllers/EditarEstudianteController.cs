@@ -19,6 +19,11 @@ namespace FASE_II_DAS_Gestion_de_expedientes_CRUD.Controllers
             return View(informacionEstudiante);
         }
 
+        [HttpGet]
+        public IActionResult Agregar()
+        {
+            return View();
+        }
         public IActionResult Eliminar(int id)
         {
             Alumno? alumno = _context.Alumnos.Find(id);
@@ -39,6 +44,19 @@ namespace FASE_II_DAS_Gestion_de_expedientes_CRUD.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpPost]
+        public IActionResult Agregar(Alumno alumno)
+        {
+            if (!ModelState.IsValid)
+                return View(alumno);
+
+            _context.Alumnos.Add(alumno);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
 
     }
 }

@@ -31,4 +31,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "editar",
     pattern: "{controller=EditarEstudiante}/{action=Editar}/{id?}");
+
+// ruta para editar
+app.MapControllerRoute(
+    name: "ver",
+    pattern: "{controller=Expediente}/{action=Ver}/{id?}");
 app.Run();
