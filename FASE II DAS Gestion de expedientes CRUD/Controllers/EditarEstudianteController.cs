@@ -27,5 +27,18 @@ namespace FASE_II_DAS_Gestion_de_expedientes_CRUD.Controllers
 
             return Ok(new { mensaje = "Eliminado correctamente" });
         }
+
+        [HttpPost]
+        public IActionResult Editar(Alumno alumno)
+        {
+            if (!ModelState.IsValid)
+                return View(alumno);
+
+            _context.Alumnos.Update(alumno);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

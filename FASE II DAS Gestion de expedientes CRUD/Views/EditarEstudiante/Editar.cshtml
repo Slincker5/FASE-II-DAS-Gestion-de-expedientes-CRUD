@@ -11,7 +11,29 @@
 
 <div class="bg-white">
 
-    <form>
-        <input type="text" name="Nombre" placeholder="Escribe tu nombre" value="@Model.Nombre"/>
+    <form asp-action="Editar" asp-controller="EditarEstudiante" method="post">
+        <input type="hidden" name="AlumnoId" value="@Model.AlumnoId" />
+        <div class="flex flex-wrap gap-y-8">
+            <div class="w-1/2 p-4 flex items-center justify-between gap-x-4">
+                <label for="Nombre" class="font-medium">Nombre: </label>
+                <input type="text" name="Nombre" id="Nombre" placeholder="Escribe tu nombre" value="@Model.Nombre" class="border border-solid border-[#ddd] p-4 py-1 rounded-sm flex-1" />
+            </div>
+            <div class="w-1/2 p-4 flex items-center justify-between gap-x-4">
+                <label for="Apellido">Apellido: </label>
+                <input type="text" name="Apellido" id="Apellido" placeholder="Escribe tu apellido" value="@Model.Apellido" class="border border-solid border-[#ddd] p-4 py-1 rounded-sm flex-1" />
+            </div>
+
+            <div class="w-1/2 p-4 flex items-center justify-between gap-x-4">
+                <label for="FechaNacimiento">Fecha de Nacimiento: </label>
+                <input type="date" name="FechaNacimiento" id="FechaNacimiento" value="@Model.FechaNacimiento?.ToString("yyyy-MM-dd")" class="border border-solid border-[#ddd] p-4 py-1 rounded-sm flex-1" />
+            </div>
+            <div class="w-1/2 p-4 flex items-center justify-between gap-x-4">
+                <label for="Grado">Grado academico: </label>
+                <input type="text" name="Grado" id="Grado" pattern="[1-9]" placeholder="Escribe tu grado" value="@Model.Grado" class="border border-solid border-[#ddd] p-4 py-1 rounded-sm flex-1" />
+            </div>
+        </div>
+        <div class="flex justify-end p-4">
+            <button class="bg-blue-600 text-white p-3 py-2 rounded-sm shadow-md shadow-black/40">Editar informacion</button>
+        </div>
     </form>
 </div>
