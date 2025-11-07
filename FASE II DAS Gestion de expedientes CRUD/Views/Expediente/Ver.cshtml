@@ -19,9 +19,17 @@
     </div>
 </div>
 
+<h1 class="font-semibold text-lg p-4 flex items-center  justify-between">
+    Expedientes disponibles
+    <a asp-controller="Expediente" asp-action="Agregar" asp-route-id="@Model.AlumnoId" class="font-medium text-blue-600 text-sm"><i class="fa-duotone fa-light fa-file-circle-plus"></i> Agregar Nota</a>
+</h1>
+
 @if (Model.Expedientes == null || !Model.Expedientes.Any())
 {
-    <p class="text-gray-500 italic">No hay expedientes registrados.</p>
+    <div class="flex items-center justify-center h-[300px]">
+        <p class="text-gray-500 italic w-full text-center">No hay expedientes registrados.</p>
+        
+    </div>
 }
 else
 {

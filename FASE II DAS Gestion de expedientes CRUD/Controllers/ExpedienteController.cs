@@ -80,5 +80,36 @@ namespace FASE_II_DAS_Gestion_de_expedientes_CRUD.Controllers
             return RedirectToAction("Ver", new { id = alumnoId });
         }
 
+        [HttpGet]
+        public IActionResult Agregar(int id)
+        {
+            // Obtener todas las materias disponibles
+            var materias = _context.Materia.ToList();
+
+            ViewBag.Materias = materias;
+            var nuevoExpediente = new Expediente
+            {
+                AlumnoId = id
+            };
+
+            return View(nuevoExpediente);
+        }
+
+        [HttpPost]
+        public IActionResult Agregar(Expediente expediente)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Materias = _context.Materia.ToList();
+                return View(expediente);
+            }
+
+            _context.Expedientes.Add(expediente);
+            _context.SaveChanges();
+
+            return RedirectToAction("Ver", new { id = expediente.AlumnoId });
+        }
+
+
     }
 }
