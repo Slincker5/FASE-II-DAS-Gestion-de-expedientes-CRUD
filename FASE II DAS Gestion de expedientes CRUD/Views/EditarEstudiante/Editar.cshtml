@@ -1,10 +1,17 @@
-﻿
+﻿@model FASE_II_DAS_Gestion_de_expedientes_CRUD.Models.Alumno;
 @{
     Layout = "_BaseTailwind";
     ViewData["Title"] = "Gestión de Expedientes";
 }
 
 <h1 class="font-semibold text-lg p-4 flex items-center  justify-between">
-    <a href="" class="font-medium text-blue-600 text-sm"><i class="fa-duotone fa-regular fa-arrow-left"></i> Regresar</a>
-    Editar  - @ViewBag.IdEstudiante
+    <a asp-controller="Home" asp-action="Index" class="font-medium text-blue-600 text-sm"><i class="fa-duotone fa-regular fa-arrow-left"></i> Regresar</a>
+    Editar Alumno
 </h1>
+
+<div class="bg-white">
+
+    <form>
+        <input type="text" name="Nombre" placeholder="Escribe tu nombre" value="@Model.Nombre"/>
+    </form>
+</div>

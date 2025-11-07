@@ -52,10 +52,12 @@ public partial class GestionexpedienteContext : DbContext
 
             entity.HasOne(d => d.Alumno).WithMany(p => p.Expedientes)
                 .HasForeignKey(d => d.AlumnoId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Expedient__Alumn__3E52440B");
 
             entity.HasOne(d => d.Material).WithMany(p => p.Expedientes)
                 .HasForeignKey(d => d.MaterialId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__Expedient__Mater__3F466844");
         });
 

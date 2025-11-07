@@ -31,15 +31,40 @@ else
         {
             <div class="p-3 border-b border-[#ddd] border-solid bg-white flex items-center justify-between">
                <div class="flex items-center justify-between gap-x-4 flex-1">
-                    <a asp-controller="EditarEstudiante" asp-action="Editar" asp-route-id="@alumno.AlumnoId" class="font-medium w-[33.33%] underline text-blue-600">@alumno.Nombre @alumno.Apellido</a>
-                    <p class="text-sm text-gray-600 text-left w-[25%]">Grado: @alumno.Grado</p>
-                    <p class="text-sm text-gray-600 w-[33.33%]">Fecha de nacimiento: @alumno.FechaNacimiento?.ToShortDateString()</p>
+                    <p class="font-medium w-[33.33%] underline text-blue-600">@alumno.Nombre @alumno.Apellido</p>
+                    <p class="text-sm text-gray-600 text-left w-[25%]"> @alumno.Grado</p>
+                    <p class="text-sm text-center text-gray-600 w-[33.33%]"> @alumno.FechaNacimiento?.ToShortDateString()</p>
                </div> 
                <div class="ml-8">
-                    <a href="" class="text-green-600 font-medium text-sm px-3 py-2"><i class="fa-duotone fa-light fa-pen"></i> Editar</a>
-                    <a href="" class="text-red-600 font-medium text-sm px-3 py-2"><i class="fa-duotone fa-light fa-trash"></i> Eliminar</a>
+                    <a asp-controller="EditarEstudiante" asp-action="Editar" asp-route-id="@alumno.AlumnoId" class="text-green-600 font-medium text-sm px-3 py-2"><i class="fa-duotone fa-light fa-pen"></i> Editar</a>
+                    <a href="" class="text-red-600 font-medium text-sm px-3 py-2 btnsEliminar" data-id="@alumno.AlumnoId" data-nombre="@alumno.Nombre" data-apellido="@alumno.Apellido"><i class="fa-duotone fa-light fa-trash"></i> Eliminar</a>
                </div>
             </div>
         }
     </div>
+}
+
+
+@section Scripts {
+    <script>
+        function eliminarAlumno (id, nombre, apellido) {
+            if (confirm("¿Seguro que quieres eliminar el alumno " + nombre + " " + apellido + "?")) {
+                fetch("/EditarEstudiante/Eliminar/" + id, { method: "POST" })
+                .then(res => {
+                    if (res.ok) {
+                        alert("Alumno eliminado correctamente");
+                        location.reload();
+                    }
+                })
+            }
+            }
+
+        const botonesEliminar = document.querySelectorAll(".btnsEliminar");
+        botonesEliminar.forEach(boton => {
+            boton.addEventListener("click", (e) => {
+                e.preventDefault();
+                eliminarAlumno(boton.dataset.id, boton.dataset.nombre, boton.dataset.apellido)
+            })
+        });
+    </script>
 }
