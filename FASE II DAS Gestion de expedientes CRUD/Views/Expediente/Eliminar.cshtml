@@ -1,0 +1,43 @@
+﻿@model FASE_II_DAS_Gestion_de_expedientes_CRUD.Models.Expediente
+
+@{
+    Layout = "_BaseTailwind";
+    ViewData["Title"] = "Eliminar Expediente";
+}
+
+<h1 class="font-semibold text-lg p-4 flex items-center justify-between">
+    <a asp-controller="Expediente" asp-action="Ver" asp-route-id="@Model.AlumnoId"
+       class="font-medium text-blue-600 text-sm">
+        <i class="fa-duotone fa-regular fa-arrow-left"></i> Regresar al expediente
+    </a>
+    Eliminar Expediente
+</h1>
+
+<div class="bg-white p-4 rounded-sm">
+    <h2 class="text-red-600 font-semibold text-lg mb-4">
+        ¿Seguro que quieres eliminar este expediente?
+    </h2>
+
+    <div class="border border-[#ddd] rounded-md p-4 mb-6 bg-gray-50">
+        <p><strong>Materia:</strong> @Model.Material?.NombreMateria</p>
+        <p><strong>Nota Final:</strong> @Model.NotaFinal</p>
+        <p><strong>Observaciones:</strong> @Model.Observaciones</p>
+    </div>
+
+    <form asp-action="Eliminar" asp-controller="Expediente" method="post">
+        <input type="hidden" name="ExpedienteId" value="@Model.ExpedienteId" />
+        <input type="hidden" name="AlumnoId" value="@Model.AlumnoId" />
+
+        <div class="flex justify-end gap-x-4">
+            <a asp-controller="Expediente" asp-action="Ver" asp-route-id="@Model.AlumnoId"
+               class="bg-gray-300 text-gray-900 px-3 py-1 rounded-md hover:bg-gray-400 text-sm font-medium text-center flex items-center justify-center">
+                Cancelar
+            </a>
+
+            <button type="submit"
+                    class="bg-red-300 text-red-900 px-3 py-1 rounded-md hover:bg-red-400 text-sm font-medium text-center flex items-center justify-center">
+                Eliminar
+            </button>
+        </div>
+    </form>
+</div>
