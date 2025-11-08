@@ -36,4 +36,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "ver",
     pattern: "{controller=Expediente}/{action=Ver}/{id?}");
+
+// ruta para materias
+app.MapControllerRoute(
+    name: "ver",
+    pattern: "{controller=Materia}/{action=Ver}/{id?}");
 app.Run();

@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "_BaseTailwind";
+    ViewData["Title"] = "Promedio de Notas por Alumno";
+    var promedios = ViewBag.Promedios as IEnumerable<dynamic> ?? new List<dynamic>();
+}
+
+<h1 class="font-semibold text-lg p-4">Promedio de notas por alumno</h1>
+
+@if (!promedios.Any())
+{
+    <p class="text-gray-500 text-center p-4 italic">
+        No hay datos disponibles para mostrar.
+    </p>
+}
+else
+{
+    <div class="bg-white p-6 shadow rounded-md">
+        <canvas id="chartPromedios" class="w-full h-[400px]"></canvas>
+    </div>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    @if (promedios.Any())
+    {
+        <script>
+            const nombres = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(promedios.Select(p => p.Nombre)));
+            const notas = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(promedios.Select(p => p.Promedio)));
+
+            const ctx = document.getElementById('chartPromedios');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: nombres,
+                    datasets: [{
+                        label: 'Promedio de notas',
+                        data: notas,
+                        backgroundColor: 'rgba(37, 99, 235, 0.6)',
+                        borderColor: 'rgba(37, 99, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10,
+                            title: {
+                                display: true,
+                                text: 'Promedio'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Promedio de notas por alumno'
+                        }
+                    }
+                }
+            });
+        </script>
+    }
+}

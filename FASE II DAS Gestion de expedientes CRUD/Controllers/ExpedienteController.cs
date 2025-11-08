@@ -110,6 +110,18 @@ namespace FASE_II_DAS_Gestion_de_expedientes_CRUD.Controllers
             return RedirectToAction("Ver", new { id = expediente.AlumnoId });
         }
 
+        public IActionResult Promedios()
+        {
+            var promedios = _context.Alumnos
+                .Select(a => new
+                {
+                    Nombre = a.Nombre + " " + a.Apellido,
+                    Promedio = a.Expedientes.Average(e => (double?)e.NotaFinal) ?? 0
+                })
+                .ToList();
 
+            ViewBag.Promedios = promedios;
+            return View();
+        }
     }
 }

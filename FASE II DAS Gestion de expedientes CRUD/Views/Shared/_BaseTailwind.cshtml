@@ -10,9 +10,10 @@
 <body class="bg-gray-50">
     <div class="grid max-w-5xl mx-auto">
         <nav class="flex items-center justify-between px-4 py-6 border-solid border-t-[5px] border-[#252525] font-medium text-xl bg-blue-700 text-white">
-            <h1>Gestion Expediente</h1>
+            <a asp-controller="Home" asp-action="Index" class="text-white text-xl font-medium underline">Gestion Expediente</a>
             <ul class="list-none">
-                <li class="inline-block"><a href="#" class="p-4 text-gray-800 hidden">enlace prueba</a></li>
+                <li class="inline-block"><a asp-controller="Materia" asp-action="Ver" class="p-4 text-white text-sm">Promedios</a></li>
+                <li class="inline-block"><a asp-controller="Materia" asp-action="Ver" class="p-4 text-white text-sm">Administrar materias</a></li>
             </ul>
         </nav>
     <div class="bg-white">

@@ -1,0 +1,41 @@
+﻿@model List<FASE_II_DAS_Gestion_de_expedientes_CRUD.Models.Materium>
+
+@{
+    Layout = "_BaseTailwind";
+    ViewData["Title"] = "Listado de Materias";
+}
+
+<h1 class="font-semibold text-lg p-4 flex items-center justify-between">
+    <span>Materias Registradas</span>
+    <a asp-controller="Materia" asp-action="Agregar"
+       class="bg-blue-600 text-white text-sm px-3 py-1 rounded-md shadow/30">
+        <i class="fa-duotone fa-plus"></i> Nueva Materia
+    </a>
+</h1>
+
+<div class="bg-white shadow p-6 rounded-md">
+    @if (Model.Count == 0)
+    {
+        <p class="text-gray-500 italic text-center py-8">No hay materias registradas.</p>
+    }
+    else
+    {
+        <div class="divide-y divide-gray-200">
+            @foreach (var materia in Model)
+            {
+                <div class="flex items-center justify-between py-3">
+                    <div>
+                        <p class="font-medium text-gray-800">@materia.NombreMateria</p>
+                        <p class="text-sm text-gray-600">Docente: @materia.Docente</p>
+                    </div>
+                    <div class="flex gap-x-3">
+                        <a asp-controller="Materia" asp-action="Editar" asp-route-id="@materia.MaterialId"
+                           class="text-green-600 font-medium text-sm">Editar</a>
+                        <a asp-controller="Materia" asp-action="Eliminar" asp-route-id="@materia.MaterialId"
+                           class="text-red-600 font-medium text-sm">Eliminar</a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

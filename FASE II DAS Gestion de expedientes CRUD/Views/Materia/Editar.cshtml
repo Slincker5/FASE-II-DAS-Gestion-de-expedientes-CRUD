@@ -1,0 +1,38 @@
+﻿@model FASE_II_DAS_Gestion_de_expedientes_CRUD.Models.Materium
+
+@{
+    Layout = "_BaseTailwind";
+    ViewData["Title"] = "Editar Materia";
+}
+
+<h1 class="font-semibold text-lg p-4 flex items-center justify-between">
+    <a asp-controller="Materia" asp-action="Index" class="font-medium text-blue-600 text-sm">
+        <i class="fa-duotone fa-arrow-left"></i> Volver
+    </a>
+    Editar Materia
+</h1>
+
+<div class="bg-white shadow p-6 rounded-md">
+    <form asp-action="Editar" method="post">
+        <input type="hidden" name="MaterialId" value="@Model.MaterialId" />
+
+        <div class="flex flex-col gap-4">
+            <div>
+                <label for="NombreMateria" class="font-medium">Nombre de la Materia:</label>
+                <input type="text" id="NombreMateria" name="NombreMateria" value="@Model.NombreMateria"
+                       class="border border-gray-300 rounded-md p-2 w-full" required />
+            </div>
+
+            <div>
+                <label for="Docente" class="font-medium">Docente:</label>
+                <input type="text" id="Docente" name="Docente" value="@Model.Docente"
+                       class="border border-gray-300 rounded-md p-2 w-full" required />
+            </div>
+
+            <button type="submit"
+                    class="bg-blue-600 text-white px-5 py-2 rounded-md shadow hover:bg-blue-700 mt-3">
+                Guardar Cambios
+            </button>
+        </div>
+    </form>
+</div>

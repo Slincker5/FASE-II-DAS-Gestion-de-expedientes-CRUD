@@ -1,0 +1,39 @@
+﻿@model FASE_II_DAS_Gestion_de_expedientes_CRUD.Models.Materium
+
+@{
+    Layout = "_BaseTailwind";
+    ViewData["Title"] = "Eliminar Materia";
+}
+
+<h1 class="font-semibold text-lg p-4 flex items-center justify-between">
+    <a asp-controller="Materia" asp-action="Index" class="font-medium text-blue-600 text-sm">
+        <i class="fa-duotone fa-arrow-left"></i> Volver
+    </a>
+    Eliminar Materia
+</h1>
+
+<div class="bg-white shadow p-6 rounded-md">
+    <h2 class="text-red-600 font-semibold text-lg mb-4">
+        ¿Seguro que deseas eliminar esta materia?
+    </h2>
+
+    <div class="border border-gray-300 rounded-md p-4 mb-6 bg-gray-50">
+        <p><strong>Materia:</strong> @Model.NombreMateria</p>
+        <p><strong>Docente:</strong> @Model.Docente</p>
+    </div>
+
+    <form asp-action="Eliminar" method="post">
+        <input type="hidden" name="MaterialId" value="@Model.MaterialId" />
+        <div class="flex justify-end gap-x-4">
+            <a asp-controller="Materia" asp-action="Index"
+               class="bg-gray-300 text-gray-800 px-5 py-2 rounded-md hover:bg-gray-400">
+                Cancelar
+            </a>
+
+            <button type="submit"
+                    class="bg-red-600 text-white px-5 py-2 rounded-md shadow-md hover:bg-red-700">
+                Eliminar
+            </button>
+        </div>
+    </form>
+</div>
