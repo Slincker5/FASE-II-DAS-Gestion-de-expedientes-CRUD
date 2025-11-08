@@ -16,7 +16,7 @@ Cada alumno puede estar matriculado en varias materias, y cada materia puede ser
 
 ###  Modelo Entidad-Relación
 
-![Diagrama ER](https://www.udbvirtual.edu.sv/auladigital/pluginfile.php/2313859/mod_assign/intro/er.png)
+![Diagrama ER](https://profiles.multimarcas.app/2c62e966-63d8-4bfd-832e-89094ae47eec/690ec29f18acf.png)
 
 ---
 
